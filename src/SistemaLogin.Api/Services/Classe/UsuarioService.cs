@@ -46,9 +46,10 @@ public class UsuarioService : IUsuarioService
         throw new NotImplementedException();
     }
 
-    public Task<UsuarioNovoDto> ObterPorId(Guid id)
+    public async Task<UsuarioNovoDto> ObterPorId(Guid id)
     {
-        throw new NotImplementedException();
+        var usuario = await _repositorioUsuario.ObterPorId(id);
+        return _mapper.Map<UsuarioNovoDto>(usuario);
     }
 
     public async Task<IEnumerable<UsuarioNovoDto>> ObterTodos()
